@@ -1,23 +1,26 @@
 package com.microservices.product.model;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "product")
+//@Entity
+//@Table(name = "product")
+@Document(value = "product")
 public class Product {
     @Id
-    @SequenceGenerator(
-            name = "product_sequence",
-            sequenceName = "product_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "product_sequence"
-    )
-    private Integer id;
+//    @SequenceGenerator(
+//            name = "product_sequence",
+//            sequenceName = "product_sequence",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "product_sequence"
+//    )
+    private String id;
     private String name;
     private String description;
     private BigDecimal price;
@@ -25,18 +28,18 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, BigDecimal price) {
+    public Product(String id, String name, String description, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
